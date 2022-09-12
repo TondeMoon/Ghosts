@@ -15,6 +15,9 @@ module.exports = {
   rules: {
     'jsx-quotes': 'off',
     'comma-dangle': 'off',
+    'object-curly-newline': 'off',
+    'linebreak-style': 'off',
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/react-in-jsx-scope': 'off',
   },
 };
