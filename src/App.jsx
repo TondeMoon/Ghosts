@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Rectangle, Tooltip } from 'react-leaflet';
 import L from 'leaflet';
 
-import { markerPos, markerPosTwo, markerPosThird } from './dev-data/positions';
+import { markerPos, markerPosTwo, markerPosThird, markerPosForth } from './dev-data/positions';
 import ghost from './images/ghostBL.png';
 import './App.css';
+
+const rectangle = [
+  [51.49, -0.095],
+  [51.5, -0.035],
+];
 
 function App() {
   const myIcon = new L.Icon({
@@ -34,6 +39,14 @@ function App() {
         {markerPosThird[currentPos] && (
           <Marker icon={myIcon} position={markerPosThird[currentPos]} />
         )}
+        {markerPosForth[currentPos] && (
+          <Marker icon={myIcon} position={markerPosForth[currentPos]} />
+        )}
+        <Rectangle bounds={rectangle} pathOptions={{ color: 'purple' }}>
+          <Tooltip direction='bottom' offset={[0, 20]} opacity={1} permanent>
+            Free from ghosts zone
+          </Tooltip>
+        </Rectangle>
       </MapContainer>
     </div>
   );
